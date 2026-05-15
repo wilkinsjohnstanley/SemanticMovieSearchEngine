@@ -1,5 +1,6 @@
 import argparse
 import os
+from datetime import date, datetime, timezone
 
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import col
@@ -49,11 +50,32 @@ def create_schema(client, class_name):
         client.schema.delete_class(class_name)
     client.schema.create_class(schema)
 
+def _serialize_date(value):
+    if value is None:
+        return None
+    if isinstance(value, datetime):
+        if value.tzinfo is None:
+            return value.replace(tzinfo=timezone.utc).isoformat().replace('+00:00', 'Z')
+        return value.isoformat()
+    if isinstance(value, date):
+        return f"{value.isoformat()}T00:00:00Z"
+    string_value = str(value).strip()
+    if not string_value:
+        return None
+    try:
+        parsed = datetime.fromisoformat(string_value)
+        if parsed.tzinfo is None:
+            return parsed.replace(tzinfo=timezone.utc).isoformat().replace('+00:00', 'Z')
+        return parsed.isoformat()
+    except ValueError:
+        return string_value
+
+
 def build_object(row):
     return {
         "tmdb_id": str(row.id) if row.id is not None else "",
         "title": row.title or "",
-        "release_date": row.release_date if row.release_date is not None else None,
+        "release_date": _serialize_date(row.release_date),
         "overview": row.overview or "",
         "tagline": row.tagline or "",
         "genre_list": row.genre_list if row.genre_list is not None else [],
