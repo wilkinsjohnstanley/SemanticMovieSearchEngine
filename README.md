@@ -90,7 +90,19 @@ df.show()
 ### Usage
 
 ```bash
+
+
+
 cd enrich
+
+Set the PySpark Python executable manually before running.
+
+In your terminal:
+
+set PYSPARK_PYTHON=python
+set PYSPARK_DRIVER_PYTHON=python
+
+
 py enrich.py --silver ingest/silver --gold enrich/gold
 ```
 
