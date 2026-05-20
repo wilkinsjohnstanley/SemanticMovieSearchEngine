@@ -90,6 +90,7 @@ df.show()
 ### Usage
 
 ```bash
+cd enrich
 py enrich.py --silver ingest/silver --gold enrich/gold
 ```
 
