@@ -129,7 +129,18 @@ The gold layer includes joined and enriched movie records with:
 
 `load_weaviate/load_weaviate.py` loads `enrich/gold/movies.parquet` into a local Weaviate instance.
 
+You can check if it's working by opening another terminal and running:
+``` docker stats ```
+If you see CPU usage on:
+```
+load_weaviate-text2vec-transformers-1
+load_weaviate-weaviate-1
+```
+then it is actively processing.
+
 ### Usage
+
+You can skip to the Docker Compose step after doing this once. 
 
 ```bash
 py load_weaviate/load_weaviate.py --gold enrich/gold --endpoint http://localhost:8080
