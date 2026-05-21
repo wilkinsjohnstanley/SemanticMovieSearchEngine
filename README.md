@@ -152,8 +152,8 @@ docker compose up -d
 py ../search/search.py "science fiction robots"
 ```
 
-The script returns top matches with title, release date, director, cast, rating, and an overview snippet:
-```
+### The script returns top matches with title, release date, director, cast, rating, and an overview snippet:
+
     OMG, I'm a Robot! (2015-08-06T00:00:00Z)    Director: Tal Goldberg    Top cast: Yotam Ishay, Hili Yalon, Tzahi Grad, Dror Keren, Rob Schneider    Overview: A sensitive guy finds out he's... a robot.
 
  
@@ -191,4 +191,3 @@ The script returns top matches with title, release date, director, cast, rating,
  
 
     Omega Doom (1996-01-01T00:00:00Z)    Director: Albert Pyun    Top cast: Rutger Hauer, Shannon Whirry, Norbert Weisser, Tina Cote, Anna Katarina    Overview: After earth is taken over by an army of robots, the small number of humans left are forced into hiding. In the nuclear winter, only droids walk the face of the earth, in fear of the rumored human resurgence, and in search of a hidden...
-```
