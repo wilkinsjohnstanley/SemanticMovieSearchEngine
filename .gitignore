@@ -1,6 +1,6 @@
 #CSV files
 
-project/bronze/credits.csv
+
 project/bronze/*.csv
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -221,3 +221,4 @@ __marimo__/
 # Streamlit
 .streamlit/secrets.toml
 project/bronze/credits.csv 
+"project/bronze/credits.csv" 
