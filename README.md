@@ -152,4 +152,43 @@ docker compose up -d
 py ../search/search.py "science fiction robots"
 ```
 
-The script returns top matches with title, release date, director, cast, rating, and an overview snippet.
+The script returns top matches with title, release date, director, cast, rating, and an overview snippet:
+```
+    OMG, I'm a Robot! (2015-08-06T00:00:00Z)    Director: Tal Goldberg    Top cast: Yotam Ishay, Hili Yalon, Tzahi Grad, Dror Keren, Rob Schneider    Overview: A sensitive guy finds out he's... a robot.
+
+ 
+
+    Robot Monster (1953-06-25T00:00:00Z)    Director: Jack Greenhalgh    Top cast: George Nader, Claudia Barrett, Selena Royle, John Mylong, Gregory Moffett    Overview: Ro-Man, an alien robot who greatly resembles a gorilla in a diving helmet, is sent to earth to destroy all human life. Ro-Man falls in love with one of the last six remaining humans, and struggles to understand how his programming can...
+
+ 
+
+    Robotropolis (2011-09-02T00:00:00Z)    Director: Christopher Hatton    Top cast: Zoe Naylor, Graham Sibley, Edward Foy, Jourdan Lee    Overview: A group of reporters are covering the unveiling of a new facility that is completely maintained by robot prototypes. When one of the robots goes haywire, the reporters find themselves not just reporting on the malfunction, but fighting...
+
+ 
+
+    Transmorphers (2007-06-26T00:00:00Z)    Director: Leigh Scott    Top cast: Matthew Wolf, Amy Weber, Shaley Scott, Eliza Swenson, Griff Furst    Overview: About a race of alien robots that have conquered Earth and forced humanity underground. After 400 years, a small group of humans develop a plan to defeat the mechanical invaders in the ultimate battle between man and machine.
+
+ 
+
+    Hands of Steel (1986-03-26T00:00:00Z)    Director: Sergio Martino    Top cast: Daniel Greene, Janet Ågren, Claudio Cassinelli, George Eastman, John Saxon    Overview: A story about a cyborg who is programmed to kill a scientist who holds the fate of mankind in his hands.
+
+ 
+
+    I, Robot (2004-07-15T00:00:00Z)    Director: Simon Duggan    Top cast: Will Smith, Bridget Moynahan, Alan Tudyk, James Cromwell, Bruce Greenwood    Avg rating: 3.34 (57 ratings)    Overview: In 2035, where robots are common-place and abide by the three laws of robotics, a techno-phobic cop investigates an apparent suicide. Suspecting that a robot may be responsible for the death, his investigation leads him to believe that...
+
+ 
+
+    Robot Stories (2003-01-01T00:00:00Z)    Director: Greg Pak    Top cast: Karen Tsen Lee, Glenn Kubota, Tamlyn Tomita, James Saito, Vin Knight    Overview: Four stories including: "My Robot Baby," in which a couple must care for a robot baby before adopting a human child; "The Robot Fixer," in which a mother tries to connect with her dying son; "Machine Love," in which an office worker...
+
+ 
+
+    The War of the Robots (1978-01-01T00:00:00Z)    Director: Alfonso Brescia    Top cast: Antonio Sabàto, Yanti Somer, Malisa Longo, Patrizia Gori, Giacomo Rossi-Stuart    Overview: An alien civilization, which facing eminent extinction, kidnaps two famous genetic scientists from Earth. A troop of soldiers is dispatched to combat the humanoid robots and rescue the victims.
+
+ 
+
+    Making Mr. Right (1987-01-01T00:00:00Z)    Director: Susan Seidelman    Top cast: John Malkovich, Ann Magnuson, Glenne Headly, Ben Masters, Polly Bergen    Avg rating: 4.00 (1 ratings)    Overview: A reclusive scientist builds a robot that looks exactly like him to go on a long term space mission. Since the scientist seems to lack all human emotion he is unable to program them into his android and an eccentric woman is hired to...
+
+ 
+
+    Omega Doom (1996-01-01T00:00:00Z)    Director: Albert Pyun    Top cast: Rutger Hauer, Shannon Whirry, Norbert Weisser, Tina Cote, Anna Katarina    Overview: After earth is taken over by an army of robots, the small number of humans left are forced into hiding. In the nuclear winter, only droids walk the face of the earth, in fear of the rumored human resurgence, and in search of a hidden...
+```
