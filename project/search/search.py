@@ -23,14 +23,43 @@ def format_overview(overview):
     snippet = overview.strip().replace("\n", " ")
     return textwrap.shorten(snippet, width=240, placeholder="...")
 
+def build_where_filter(field, query):
+    if field == "director":
+        return {
+            "path": ["director"],
+            "operator": "Equal",
+            "valueText": query,
+        }
+    if field == "top_cast":
+        return {
+            "path": ["top_cast"],
+            "operator": "Equal",
+            "valueText": query,
+        }
+    if field == "year":
+        year = int(query)
+        return {
+            "operator": "And",
+            "operands": [
+                {
+                    "path": ["release_date"],
+                    "operator": "GreaterThanEqual",
+                    "valueDate": f"{year:04d}-01-01T00:00:00Z",
+                },
+                {
+                    "path": ["release_date"],
+                    "operator": "LessThan",
+                    "valueDate": f"{year + 1:04d}-01-01T00:00:00Z",
+                },
+            ],
+        }
+    return None
+
+
 def search_movies(client, query, limit=10, filter_field=None):
     q = client.query.get(CLASS_NAME, RESULT_PROPERTIES).with_near_text({"concepts": [query]})
     if filter_field is not None and filter_field != "any":
-        q = q.with_where({
-            "path": [filter_field],
-            "operator": "Equal",
-            "valueText": query,
-        })
+        q = q.with_where(build_where_filter(filter_field, query))
     response = q.with_limit(limit).do()
 
     hits = response.get("data", {}).get("Get", {}).get(CLASS_NAME, [])
@@ -68,9 +97,9 @@ if __name__ == "__main__":
     parser.add_argument("--limit", type=int, default=10, help="Number of results to return")
     parser.add_argument(
         "--field",
-        choices=["any", "director", "top_cast"],
+        choices=["any", "director", "top_cast", "year"],
         default="any",
-        help="Optional exact field filter for actor/director name searches",
+        help="Optional exact field filter for actor/director name or release year searches",
     )
     args = parser.parse_args()
     main(args.query, args.endpoint, args.limit, args.field)
