@@ -24,6 +24,10 @@ def format_overview(overview):
     return textwrap.shorten(snippet, width=240, placeholder="...")
 
 def build_where_filter(field, query):
+    # -- This is a very basic implementation of a filter builder for demonstration purposes.
+    # field is expected to be one of "director", "top_cast", or "year". In a real application, you would want to add error handling and support for more complex queries.
+    # query is expected to be a string for "director" and "top_cast", and a year (as a string) for "year". In a real application, you would want to add error handling and support for more complex queries.
+    
     if field == "director":
         return {
             "path": ["director"],
