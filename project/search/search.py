@@ -23,21 +23,22 @@ def format_overview(overview):
     snippet = overview.strip().replace("\n", " ")
     return textwrap.shorten(snippet, width=240, placeholder="...")
 
-def search_movies(client, query, limit=10):
-    response = (
-        client.query
-        .get(CLASS_NAME, RESULT_PROPERTIES)
-        .with_near_text({"concepts": [query]})
-        .with_limit(limit)
-        .do()
-    )
+def search_movies(client, query, limit=10, filter_field=None):
+    q = client.query.get(CLASS_NAME, RESULT_PROPERTIES).with_near_text({"concepts": [query]})
+    if filter_field is not None and filter_field != "any":
+        q = q.with_where({
+            "path": [filter_field],
+            "operator": "Equal",
+            "valueText": query,
+        })
+    response = q.with_limit(limit).do()
 
     hits = response.get("data", {}).get("Get", {}).get(CLASS_NAME, [])
     return hits
 
-def main(query, endpoint, limit):
+def main(query, endpoint, limit, field):
     client = create_client(endpoint)
-    results = search_movies(client, query, limit)
+    results = search_movies(client, query, limit, filter_field=field)
 
     if not results:
         print("No results found. Try a different query.")
@@ -65,5 +66,11 @@ if __name__ == "__main__":
     parser.add_argument("query", help="Natural-language search query")
     parser.add_argument("--endpoint", default="http://localhost:8080", help="Weaviate endpoint URL")
     parser.add_argument("--limit", type=int, default=10, help="Number of results to return")
+    parser.add_argument(
+        "--field",
+        choices=["any", "director", "top_cast"],
+        default="any",
+        help="Optional exact field filter for actor/director name searches",
+    )
     args = parser.parse_args()
-    main(args.query, args.endpoint, args.limit)
+    main(args.query, args.endpoint, args.limit, args.field)
