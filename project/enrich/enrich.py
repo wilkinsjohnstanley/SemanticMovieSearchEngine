@@ -2,7 +2,16 @@ import argparse
 import ast
 import os
 
+# The enrich.py file reads the cleaned Parquet files from the silver layer, 
+# performs data enrichment by joining related datasets (movies, credits, keywords, ratings), 
+# and extracts structured information such as director names, top cast members, genres, and keywords. 
+# It also computes average ratings and rating counts for each movie. 
+# Finally, it writes the enriched dataset to the gold layer in Parquet format 
+# for use in downstream applications like semantic search or recommendation systems.
 
+# Parquet files allow us to efficiently read and write structured data, 
+# and Spark's distributed processing capabilities enable us to handle large datasets 
+# and complex transformations with ease.
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import (
     array_join,
