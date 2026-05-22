@@ -1,5 +1,10 @@
 import argparse
 import os
+# The ingest.py file is responsible for reading raw CSV files from the bronze layer,
+# performing cleaning and validation, and writing the cleaned data to the silver layer in Parquet format.
+# It also ensures that only valid records are retained and that the data is consistent 
+# across related datasets.
+
 
 # Set HADOOP_HOME before importing Spark
 os.environ['HADOOP_HOME'] = r'C:\hadoop'
